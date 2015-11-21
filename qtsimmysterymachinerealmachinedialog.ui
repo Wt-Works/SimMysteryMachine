@@ -14,7 +14,7 @@
    <string>The real MysteryMachine</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="ToolSimMysteryMachine.qrc">
+   <iconset resource="SimMysteryMachine.qrc">
     <normaloff>:/images/R.png</normaloff>:/images/R.png</iconset>
   </property>
   <property name="styleSheet">
@@ -46,7 +46,7 @@ selection-background-color: white
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="ToolSimMysteryMachine.qrc">:/images/ToolSimMysteryMachine.png</pixmap>
+      <pixmap resource="SimMysteryMachine.qrc">:/images/SimMysteryMachine.png</pixmap>
      </property>
     </widget>
    </item>
@@ -68,7 +68,7 @@ selection-background-color: white
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="ToolSimMysteryMachine.qrc">:/images/ToolSimMysteryMachinePrototype.png</pixmap>
+      <pixmap resource="SimMysteryMachine.qrc">:/images/SimMysteryMachinePrototype.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -92,7 +92,7 @@ selection-background-color: white
   </layout>
  </widget>
  <resources>
-  <include location="ToolSimMysteryMachine.qrc"/>
+  <include location="SimMysteryMachine.qrc"/>
  </resources>
  <connections/>
 </ui>

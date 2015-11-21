@@ -22,7 +22,7 @@
    <string>SimMysteryMachine</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="ToolSimMysteryMachine.qrc">
+   <iconset resource="SimMysteryMachine.qrc">
     <normaloff>:/images/R.png</normaloff>:/images/R.png</iconset>
   </property>
   <property name="styleSheet">
@@ -133,7 +133,7 @@ selection-background-color: white
   <tabstop>button_quit</tabstop>
  </tabstops>
  <resources>
-  <include location="ToolSimMysteryMachine.qrc"/>
+  <include location="SimMysteryMachine.qrc"/>
  </resources>
  <connections/>
 </ui>

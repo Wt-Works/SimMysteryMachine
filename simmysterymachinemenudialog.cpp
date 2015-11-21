@@ -61,7 +61,7 @@ ribi::About ribi::SimMysteryMachineMenuDialog::GetAbout() const noexcept
     "Richel Bilderbeek",
     "SimMysteryMachine",
     "simulator of my mystery machine",
-    "the 26th of August 2012",
+    "November 26st of 2015",
     "2011-2015",
     "http://www.richelbilderbeek.nl/ToolSimMysteryMachine.htm",
     GetVersion(),
@@ -92,18 +92,9 @@ ribi::Help ribi::SimMysteryMachineMenuDialog::GetHelp() const noexcept
   );
 }
 
-boost::shared_ptr<const ribi::Program> ribi::SimMysteryMachineMenuDialog::GetProgram() const noexcept
-{
-  const boost::shared_ptr<const Program> p {
-    new ProgramSimMysteryMachine
-  };
-  assert(p);
-  return p;
-}
-
 std::string ribi::SimMysteryMachineMenuDialog::GetVersion() const noexcept
 {
-  return "1.2";
+  return "2.0";
 }
 
 std::vector<std::string> ribi::SimMysteryMachineMenuDialog::GetVersionHistory() const noexcept
@@ -111,7 +102,8 @@ std::vector<std::string> ribi::SimMysteryMachineMenuDialog::GetVersionHistory() 
   return {
     "2011-04-10: Version 1.0: initial version (web application version not working yet)",
     "2011-09-15: Version 1.1: working web application, added picture of a physical prototype of a MysteryMachine",
-    "2012-08-26: Version 1.2: added picture of a physical MysteryMachine, improved aesthetics"
+    "2012-08-26: Version 1.2: added picture of a physical MysteryMachine, improved aesthetics",
+    "2015-11-21: Version 2.0: moved to own GitHub",
   };
 }
 
