@@ -83,10 +83,6 @@ struct MysteryMachineWidget : public Widget
   ///Respond to a change in geometry
   void OnResize() noexcept;
 
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
-
   friend std::ostream& operator<<(std::ostream& os, const MysteryMachineWidget& widget) noexcept;
 };
 

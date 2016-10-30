@@ -30,11 +30,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include "led.h"
 #include "ledwidget.h"
 #include "textcanvas.h"
-#include "testtimer.h"
+
 #include "togglebutton.h"
 #include "togglebuttonwidget.h"
-#include "trace.h"
-
 #pragma GCC diagnostic pop
 
 ribi::MysteryMachine::MysteryMachine() noexcept
@@ -54,10 +52,12 @@ ribi::MysteryMachine::MysteryMachine() noexcept
   #ifndef NDEBUG
   Test();
   #endif
-  m_dial_back->GetDial()->m_signal_position_changed.connect(boost::bind(
-    &ribi::MysteryMachine::Update,this));
-  m_dial_front->GetDial()->m_signal_position_changed.connect(boost::bind(
-    &ribi::MysteryMachine::Update,this));
+
+  //TODO: signal got removed, should be detected by the tests
+  //m_dial_back->GetDial().m_signal_position_changed.connect(boost::bind(
+  //  &ribi::MysteryMachine::Update,this));
+  //m_dial_front->GetDial().m_signal_position_changed.connect(boost::bind(
+  //  &ribi::MysteryMachine::Update,this));
   m_toggle_button->GetToggleButton()->m_signal_toggled.connect(boost::bind(
     &ribi::MysteryMachine::Update,this));
   Update();
@@ -85,7 +85,7 @@ void ribi::MysteryMachine::Test() noexcept
     if (is_tested) return;
     is_tested = true;
   }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
+
   MysteryMachine m;
   assert(!m.GetVersion().empty());
 }
@@ -116,27 +116,27 @@ const boost::shared_ptr<ribi::TextCanvas> ribi::MysteryMachine::ToTextCanvas() c
   canvas->PutCanvas(1,1,m_dial_front->ToTextCanvas(3));
   canvas->PutCanvas(49,12,m_dial_back->ToTextCanvas(3));
 
-  canvas->PutCanvas(9,1,m_led_front_1->ToCanvas(3));
-  canvas->PutCanvas(9,6,m_led_front_2->ToCanvas(3));
-  canvas->PutCanvas(9,11,m_led_front_3->ToCanvas(3));
+  canvas->PutCanvas(9,1,*m_led_front_1->ToCanvas(3));
+  canvas->PutCanvas(9,6,*m_led_front_2->ToCanvas(3));
+  canvas->PutCanvas(9,11,*m_led_front_3->ToCanvas(3));
 
-  canvas->PutCanvas(17,1,m_led_top_front->ToCanvas(3));
-  canvas->PutCanvas(25,6,m_led_top_middle->ToCanvas(3));
-  canvas->PutCanvas(33,11,m_led_top_back->ToCanvas(3));
+  canvas->PutCanvas(17,1,*m_led_top_front->ToCanvas(3));
+  canvas->PutCanvas(25,6,*m_led_top_middle->ToCanvas(3));
+  canvas->PutCanvas(33,11,*m_led_top_back->ToCanvas(3));
 
-  canvas->PutCanvas(41,2,m_led_back_3->ToCanvas(3));
-  canvas->PutCanvas(41,7,m_led_back_2->ToCanvas(3));
-  canvas->PutCanvas(41,12,m_led_back_1->ToCanvas(3));
+  canvas->PutCanvas(41,2,*m_led_back_3->ToCanvas(3));
+  canvas->PutCanvas(41,7,*m_led_back_2->ToCanvas(3));
+  canvas->PutCanvas(41,12,*m_led_back_1->ToCanvas(3));
 
-  canvas->PutCanvas(26,1,m_toggle_button->ToTextCanvas(6,4));
+  canvas->PutCanvas(26,1,*m_toggle_button->ToTextCanvas(6,4));
   return canvas;
 }
 
 
 void ribi::MysteryMachine::Update() noexcept
 {
-  const int back = static_cast<int>(GetDialBack()->GetDial()->GetPosition() * 12.0) % 3;
-  const int front = static_cast<int>(GetDialFront()->GetDial()->GetPosition() * 12.0) % 3;
+  const int back = static_cast<int>(GetDialBack()->GetDial().GetPosition() * 12.0) % 3;
+  const int front = static_cast<int>(GetDialFront()->GetDial().GetPosition() * 12.0) % 3;
   int top = (GetToggleButton()->GetToggleButton()->IsPressed()
     ? (1 + front - back + 3) % 3
     : -1);

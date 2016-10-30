@@ -34,10 +34,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include "led.h"
 #include "ledwidget.h"
 #include "mysterymachine.h"
-#include "testtimer.h"
+
 #include "togglebutton.h"
 #include "togglebuttonwidget.h"
-#include "trace.h"
+
 #pragma GCC diagnostic pop
 
 ribi::MysteryMachineWidget::MysteryMachineWidget(
@@ -46,9 +46,6 @@ ribi::MysteryMachineWidget::MysteryMachineWidget(
     m_machine(new MysteryMachine)
 
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   SetGeometry(geometry);
 }
 
@@ -103,10 +100,10 @@ void ribi::MysteryMachineWidget::PressKey(const MysteryMachineKey key) noexcept
     case MysteryMachineKey::back_clockwise:
     {
       const double f {
-        GetMachine()->GetDialBack()->GetDial()->GetPosition()
+        GetMachine()->GetDialBack()->GetDial().GetPosition()
         + (1.0 / 12.0)
       };
-      GetMachine()->GetDialBack()->GetDial()->SetPosition(
+      GetMachine()->GetDialBack()->GetDial().SetPosition(
         f >= 1.0 ? f - 1.0 : f
       );
       m_signal_changed();
@@ -115,10 +112,10 @@ void ribi::MysteryMachineWidget::PressKey(const MysteryMachineKey key) noexcept
     case MysteryMachineKey::back_counter_clockwise:
     {
       const double f {
-        GetMachine()->GetDialBack()->GetDial()->GetPosition()
+        GetMachine()->GetDialBack()->GetDial().GetPosition()
         - (1.0 / 12.0)
       };
-      GetMachine()->GetDialBack()->GetDial()->SetPosition(
+      GetMachine()->GetDialBack()->GetDial().SetPosition(
         f < 0.0 ? f + 1.0 : f
       );
       m_signal_changed();
@@ -127,10 +124,10 @@ void ribi::MysteryMachineWidget::PressKey(const MysteryMachineKey key) noexcept
     case MysteryMachineKey::front_clockwise:
     {
       const double f {
-        GetMachine()->GetDialFront()->GetDial()->GetPosition()
+        GetMachine()->GetDialFront()->GetDial().GetPosition()
         + (1.0 / 12.0)
       };
-      GetMachine()->GetDialFront()->GetDial()->SetPosition(
+      GetMachine()->GetDialFront()->GetDial().SetPosition(
         f >= 1.0 ? f - 1.0 : f
       );
       m_signal_changed();
@@ -139,10 +136,10 @@ void ribi::MysteryMachineWidget::PressKey(const MysteryMachineKey key) noexcept
     case MysteryMachineKey::front_counter_clockwise:
     {
       const double f {
-        GetMachine()->GetDialFront()->GetDial()->GetPosition()
+        GetMachine()->GetDialFront()->GetDial().GetPosition()
         - (1.0 / 12.0)
       };
-      GetMachine()->GetDialFront()->GetDial()->SetPosition(
+      GetMachine()->GetDialFront()->GetDial().SetPosition(
         f < 0.0 ? f + 1.0 : f
       );
       m_signal_changed();
@@ -156,69 +153,6 @@ void ribi::MysteryMachineWidget::PressKey(const MysteryMachineKey key) noexcept
     break;
   }
 }
-
-/*
-void ribi::MysteryMachineWidget::PressKey(const MysteryMachineKey key) noexcept
-{
-  switch (key)
-  {
-    case MysteryMachineKey::back_clockwise:
-    {
-      const double f {
-        GetMachine()->GetDialBack()->GetDial()->GetPosition()
-        + (1.0 / 12.0)
-      };
-      GetMachine()->GetDialBack()->GetDial()->SetPosition(
-        f >= 1.0 ? f - 1.0 : f
-      );
-      m_signal_changed();
-    }
-    break;
-    case MysteryMachineKey::back_counter_clockwise:
-    {
-      const double f {
-        GetMachine()->GetDialBack()->GetDial()->GetPosition()
-        - (1.0 / 12.0)
-      };
-      GetMachine()->GetDialBack()->GetDial()->SetPosition(
-        f < 0.0 ? f + 1.0 : f
-      );
-      m_signal_changed();
-    }
-    break;
-    case MysteryMachineKey::front_clockwise:
-    {
-      const double f {
-        GetMachine()->GetDialFront()->GetDial()->GetPosition()
-        + (1.0 / 12.0)
-      };
-      GetMachine()->GetDialFront()->GetDial()->SetPosition(
-        f >= 1.0 ? f - 1.0 : f
-      );
-      m_signal_changed();
-    }
-    break;
-    case MysteryMachineKey::front_counter_clockwise:
-    {
-      const double f {
-        GetMachine()->GetDialFront()->GetDial()->GetPosition()
-        - (1.0 / 12.0)
-      };
-      GetMachine()->GetDialFront()->GetDial()->SetPosition(
-        f < 0.0 ? f + 1.0 : f
-      );
-      m_signal_changed();
-    }
-    break;
-    case MysteryMachineKey::toggle:
-    {
-      GetMachine()->GetToggleButton()->GetToggleButton()->Toggle();
-      m_signal_changed();
-    }
-    break;
-  }
-}
-*/
 
 void ribi::MysteryMachineWidget::OnResize() noexcept
 {
@@ -261,19 +195,7 @@ void ribi::MysteryMachineWidget::OnResize() noexcept
   //m_signal_mysterymachine_changed();
 }
 
-#ifndef NDEBUG
-void ribi::MysteryMachineWidget::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-  MysteryMachineWidget w;
-  assert(!w.GetVersion().empty());
-}
-#endif
+
 
 boost::shared_ptr<ribi::TextCanvas> ribi::MysteryMachineWidget::ToTextCanvas() const noexcept
 {
