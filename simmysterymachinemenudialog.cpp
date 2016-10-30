@@ -33,7 +33,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include "mysterymachine.h"
 #include "mysterymachinewidget.h"
-#include "richelbilderbeekprogram.h"
 #include "togglebutton.h"
 #include "togglebuttonwidget.h"
 
@@ -42,9 +41,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 int ribi::SimMysteryMachineMenuDialog::ExecuteSpecific(const std::vector<std::string>& argv) noexcept
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   const int argc = static_cast<int>(argv.size());
   if (argc == 1)
   {
@@ -106,15 +102,3 @@ std::vector<std::string> ribi::SimMysteryMachineMenuDialog::GetVersionHistory() 
     "2015-11-21: Version 2.0: moved to own GitHub",
   };
 }
-
-#ifndef NDEBUG
-void ribi::SimMysteryMachineMenuDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  
-}
-#endif
