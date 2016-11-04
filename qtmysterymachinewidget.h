@@ -48,7 +48,7 @@ struct QtToggleButtonWidget;
 ///QtMysteryMachineWidget displays a MysteryMachine
 struct QtMysteryMachineWidget : public QWidget
 {
-  Q_OBJECT
+  Q_OBJECT //!OCLINT
 
   public:
 

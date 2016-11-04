@@ -41,7 +41,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include "ledwidget.h"
 #include "togglebutton.h"
 #include "togglebuttonwidget.h"
-//#include "trace.h"
+//
 #include "mysterymachine.h"
 #include "mysterymachinewidget.h"
 #include "wtdialwidget.h"
@@ -56,19 +56,20 @@ ribi::WtMysteryMachineWidget::WtMysteryMachineWidget(
       Geometry().CreateRect(0,0,width-1,height-1)))
 {
   assert(m_widget);
-
-  m_widget->GetMachine()->GetDialBack()->GetDial()->m_signal_position_changed.connect(boost::bind(
+  /*
+  m_widget->GetMachine()->GetDialBack()->GetDial().m_signal_position_changed.connect(boost::bind(
     &ribi::WtMysteryMachineWidget::DoRepaint,this));
-  m_widget->GetMachine()->GetDialFront()->GetDial()->m_signal_position_changed.connect(boost::bind(
+  m_widget->GetMachine()->GetDialFront()->GetDial().m_signal_position_changed.connect(boost::bind(
     &ribi::WtMysteryMachineWidget::DoRepaint,this));
+  */
   m_widget->GetMachine()->GetToggleButton()->GetToggleButton()->m_signal_toggled.connect(boost::bind(
     &ribi::WtMysteryMachineWidget::DoRepaint,this));
-
+  /*
   m_widget->m_signal_geometry_changed.connect(
     boost::bind(
       &ribi::WtMysteryMachineWidget::OnResize,
       this));
-
+  */
   this->clicked().connect(this,&ribi::WtMysteryMachineWidget::OnClicked);
 
   this->m_widget->SetGeometry(Geometry().CreateRect(0,0,width,height));

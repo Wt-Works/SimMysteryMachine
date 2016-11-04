@@ -21,8 +21,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #ifndef QTMYSTERYMACHINEDIALOG_H
 #define QTMYSTERYMACHINEDIALOG_H
 
-#include <boost/scoped_ptr.hpp>
-
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Weffc++"
 #include "qthideandshowdialog.h"
@@ -48,11 +46,7 @@ public:
 
 private:
   Ui::QtSimMysteryMachineMainDialog *ui;
-  boost::scoped_ptr<QtMysteryMachineWidget> m_machine;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
+  QtMysteryMachineWidget * const m_machine;
 };
 
 } //~namespace ribi

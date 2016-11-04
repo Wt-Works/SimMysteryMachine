@@ -1,21 +1,21 @@
-include(../SimMysteryMachine/SimMysteryMachineConsole.pri)
+include(SimMysteryMachineConsole.pri)
 
 FORMS += \
-    ../SimMysteryMachine/qtsimmysterymachinerealmachinedialog.ui \
-    ../SimMysteryMachine/qtsimmysterymachinemenudialog.ui \
-    ../SimMysteryMachine/qtsimmysterymachinemaindialog.ui \
-    ../SimMysteryMachine/qtsimmysterymachineinstructionsdialog.ui
+    $$PWD/qtsimmysterymachinerealmachinedialog.ui \
+    $$PWD/qtsimmysterymachinemenudialog.ui \
+    $$PWD/qtsimmysterymachinemaindialog.ui \
+    $$PWD/qtsimmysterymachineinstructionsdialog.ui
 
 SOURCES += \
-    ../SimMysteryMachine/qtsimmysterymachinerealmachinedialog.cpp \
-    ../SimMysteryMachine/qtsimmysterymachinemenudialog.cpp \
-    ../SimMysteryMachine/qtsimmysterymachinemaindialog.cpp \
-    ../SimMysteryMachine/qtsimmysterymachineinstructionsdialog.cpp \
-    ../SimMysteryMachine/qtmysterymachinecanvas.cpp
+    $$PWD/qtsimmysterymachinerealmachinedialog.cpp \
+    $$PWD/qtsimmysterymachinemenudialog.cpp \
+    $$PWD/qtsimmysterymachinemaindialog.cpp \
+    $$PWD/qtsimmysterymachineinstructionsdialog.cpp \
+    $$PWD/qtmysterymachinecanvas.cpp
 
 HEADERS += \
-    ../SimMysteryMachine/qtsimmysterymachinerealmachinedialog.h \
-    ../SimMysteryMachine/qtsimmysterymachinemenudialog.h \
-    ../SimMysteryMachine/qtsimmysterymachinemaindialog.h \
-    ../SimMysteryMachine/qtsimmysterymachineinstructionsdialog.h \
-    ../SimMysteryMachine/qtmysterymachinecanvas.h
+    $$PWD/qtsimmysterymachinerealmachinedialog.h \
+    $$PWD/qtsimmysterymachinemenudialog.h \
+    $$PWD/qtsimmysterymachinemaindialog.h \
+    $$PWD/qtsimmysterymachineinstructionsdialog.h \
+    $$PWD/qtmysterymachinecanvas.h

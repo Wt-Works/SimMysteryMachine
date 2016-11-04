@@ -37,7 +37,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include "ledwidget.h"
 #include "togglebutton.h"
 #include "togglebuttonwidget.h"
-//#include "trace.h"
+//
 #include "mysterymachine.h"
 #include "mysterymachinewidget.h"
 #include "qtdialwidget.h"
@@ -53,18 +53,20 @@ ribi::QtMysteryMachineWidget::QtMysteryMachineWidget(QWidget *parent)
     Widget::CreateRect(0,0,200,400)))
 {
   assert(m_widget);
-
-  m_widget->GetMachine()->GetDialBack()->GetDial()->m_signal_position_changed.connect(boost::bind(
+  /*
+  m_widget->GetMachine()->GetDialBack()->GetDial().m_signal_position_changed.connect(boost::bind(
     &ribi::QtMysteryMachineWidget::DoRepaint,this));
-  m_widget->GetMachine()->GetDialFront()->GetDial()->m_signal_position_changed.connect(boost::bind(
+  m_widget->GetMachine()->GetDialFront()->GetDial().m_signal_position_changed.connect(boost::bind(
     &ribi::QtMysteryMachineWidget::DoRepaint,this));
+  */
   m_widget->GetMachine()->GetToggleButton()->GetToggleButton()->m_signal_toggled.connect(boost::bind(
     &ribi::QtMysteryMachineWidget::DoRepaint,this));
+  /*
   m_widget->m_signal_geometry_changed.connect(
     boost::bind(
       &ribi::QtMysteryMachineWidget::DoRepaint,
       this));
-
+  */
   resize(200,400);
 }
 
@@ -78,18 +80,20 @@ ribi::QtMysteryMachineWidget::QtMysteryMachineWidget(
     }
 {
   assert(m_widget);
-
-  m_widget->GetMachine()->GetDialBack()->GetDial()->m_signal_position_changed.connect(boost::bind(
+  /*
+  m_widget->GetMachine()->GetDialBack()->GetDial().m_signal_position_changed.connect(boost::bind(
     &ribi::QtMysteryMachineWidget::DoRepaint,this));
-  m_widget->GetMachine()->GetDialFront()->GetDial()->m_signal_position_changed.connect(boost::bind(
+  m_widget->GetMachine()->GetDialFront()->GetDial().m_signal_position_changed.connect(boost::bind(
     &ribi::QtMysteryMachineWidget::DoRepaint,this));
+  */
   m_widget->GetMachine()->GetToggleButton()->GetToggleButton()->m_signal_toggled.connect(boost::bind(
     &ribi::QtMysteryMachineWidget::DoRepaint,this));
+  /*
   m_widget->m_signal_geometry_changed.connect(
     boost::bind(
       &ribi::QtMysteryMachineWidget::DoRepaint,
       this));
-
+  */
   resize(width,height);
 }
 
@@ -123,15 +127,15 @@ void ribi::QtMysteryMachineWidget::paintEvent(QPaintEvent *)
   QPainter painter(this);
   QtDialWidget::DrawDial(painter,GetWidget()->GetMachine()->GetDialBack());
   QtDialWidget::DrawDial(painter,GetWidget()->GetMachine()->GetDialFront());
-  QtLedWidget::DrawLed(painter,GetWidget()->GetMachine()->GetLedBack1());
-  QtLedWidget::DrawLed(painter,GetWidget()->GetMachine()->GetLedBack2());
-  QtLedWidget::DrawLed(painter,GetWidget()->GetMachine()->GetLedBack3());
-  QtLedWidget::DrawLed(painter,GetWidget()->GetMachine()->GetLedFront1());
-  QtLedWidget::DrawLed(painter,GetWidget()->GetMachine()->GetLedFront2());
-  QtLedWidget::DrawLed(painter,GetWidget()->GetMachine()->GetLedFront3());
-  QtLedWidget::DrawLed(painter,GetWidget()->GetMachine()->GetLedTopBack());
-  QtLedWidget::DrawLed(painter,GetWidget()->GetMachine()->GetLedTopFront());
-  QtLedWidget::DrawLed(painter,GetWidget()->GetMachine()->GetLedTopMiddle());
+  QtLedWidget::DrawLed(painter,*GetWidget()->GetMachine()->GetLedBack1());
+  QtLedWidget::DrawLed(painter,*GetWidget()->GetMachine()->GetLedBack2());
+  QtLedWidget::DrawLed(painter,*GetWidget()->GetMachine()->GetLedBack3());
+  QtLedWidget::DrawLed(painter,*GetWidget()->GetMachine()->GetLedFront1());
+  QtLedWidget::DrawLed(painter,*GetWidget()->GetMachine()->GetLedFront2());
+  QtLedWidget::DrawLed(painter,*GetWidget()->GetMachine()->GetLedFront3());
+  QtLedWidget::DrawLed(painter,*GetWidget()->GetMachine()->GetLedTopBack());
+  QtLedWidget::DrawLed(painter,*GetWidget()->GetMachine()->GetLedTopFront());
+  QtLedWidget::DrawLed(painter,*GetWidget()->GetMachine()->GetLedTopMiddle());
   QtToggleButtonWidget::DrawToggleButton(painter,GetWidget()->GetMachine()->GetToggleButton());
 }
 

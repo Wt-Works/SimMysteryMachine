@@ -45,16 +45,12 @@ public:
 private:
   Ui::QtSimMysteryMachineMenuDialog *ui;
 
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
-
 private slots:
-    void on_button_start_clicked() noexcept;
-    void on_button_about_clicked() noexcept;
-    void on_button_quit_clicked() noexcept;
-    void on_button_instructions_clicked() noexcept;
-    void on_button_real_clicked() noexcept;
+  void on_button_start_clicked() noexcept;
+  void on_button_about_clicked() noexcept;
+  void on_button_quit_clicked() noexcept;
+  void on_button_instructions_clicked() noexcept;
+  void on_button_real_clicked() noexcept;
 };
 
 } //~namespace ribi

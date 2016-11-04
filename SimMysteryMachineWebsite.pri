@@ -1,9 +1,9 @@
-include(../../Tools/ToolSimMysteryMachine/ToolSimMysteryMachineConsole.pri)
+include(SimMysteryMachineConsole.pri)
 
 SOURCES += \
-    ../../Tools/ToolSimMysteryMachine/wtsimmysterymachinemaindialog.cpp \
-    ../../Tools/ToolSimMysteryMachine/wtsimmysterymachinemenudialog.cpp
+    $$PWD/wtsimmysterymachinemaindialog.cpp \
+    $$PWD/wtsimmysterymachinemenudialog.cpp
 
 HEADERS += \
-    ../../Tools/ToolSimMysteryMachine/wtsimmysterymachinemaindialog.h \
-    ../../Tools/ToolSimMysteryMachine/wtsimmysterymachinemenudialog.h
+    $$PWD/wtsimmysterymachinemaindialog.h \
+    $$PWD/wtsimmysterymachinemenudialog.h

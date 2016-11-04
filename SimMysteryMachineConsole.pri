@@ -2,10 +2,10 @@ INCLUDEPATH += \
     ../SimMysteryMachine
 
 SOURCES += \
-    ../SimMysteryMachine/simmysterymachinemenudialog.cpp
+    $$PWD/simmysterymachinemenudialog.cpp
 
 HEADERS += \
-    ../SimMysteryMachine/simmysterymachinemenudialog.h
+    $$PWD/simmysterymachinemenudialog.h
 
 RESOURCES += \
-    ../SimMysteryMachine/SimMysteryMachine.qrc
+    $$PWD/SimMysteryMachine.qrc

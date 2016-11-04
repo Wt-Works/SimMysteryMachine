@@ -36,8 +36,8 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include "qtsimmysterymachinerealmachinedialog.h"
 #include "qttogglebuttonwidget.h"
 #include "simmysterymachinemenudialog.h"
-#include "testtimer.h"
-#include "trace.h"
+
+
 #include "ui_qtsimmysterymachinemenudialog.h"
 
 #pragma GCC diagnostic pop
@@ -46,16 +46,13 @@ ribi::QtSimMysteryMachineMenuDialog::QtSimMysteryMachineMenuDialog(QWidget *pare
     QtHideAndShowDialog(parent),
     ui(new Ui::QtSimMysteryMachineMenuDialog)
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   ui->setupUi(this);
 
-  ui->led_1->GetWidget()->GetLed()->SetColor(255,255,255);
-  ui->led_2->GetWidget()->GetLed()->SetColor(255,  0,  0);
-  ui->led_3->GetWidget()->GetLed()->SetColor(  0,255,  0);
-  ui->led_4->GetWidget()->GetLed()->SetColor(  0,  0,255);
-  ui->led_5->GetWidget()->GetLed()->SetColor(  0,  0,  0);
+  ui->led_1->GetWidget().GetLed().SetColor(255,255,255);
+  ui->led_2->GetWidget().GetLed().SetColor(255,  0,  0);
+  ui->led_3->GetWidget().GetLed().SetColor(  0,255,  0);
+  ui->led_4->GetWidget().GetLed().SetColor(  0,  0,255);
+  ui->led_5->GetWidget().GetLed().SetColor(  0,  0,  0);
 }
 
 ribi::QtSimMysteryMachineMenuDialog::~QtSimMysteryMachineMenuDialog() noexcept
@@ -107,33 +104,3 @@ void ribi::QtSimMysteryMachineMenuDialog::on_button_real_clicked() noexcept
   QtSimMysteryMachineRealMachineDialog d;
   this->ShowChild(&d);
 }
-
-#ifndef NDEBUG
-void ribi::QtSimMysteryMachineMenuDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  SimMysteryMachineMenuDialog();
-  QtMysteryMachineWidget();
-  {
-    const boost::shared_ptr<MysteryMachineWidget> p { new MysteryMachineWidget };
-    assert(p);
-  }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-  /*
-  {
-    const boost::shared_ptr<QtMysteryMachineCanvas> canvas {
-      new QtMysteryMachineCanvas
-    };
-    assert(canvas);
-    const boost::shared_ptr<QtCanvasDialog> dialog {
-      new QtCanvasDialog(canvas.get())
-    };
-    assert(dialog);
-  }
-  */
-}
-#endif

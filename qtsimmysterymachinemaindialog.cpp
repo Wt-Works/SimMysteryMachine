@@ -34,23 +34,20 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include "mysterymachine.h"
 #include "mysterymachinewidget.h"
 #include "qtmysterymachinewidget.h"
-#include "testtimer.h"
+
 #include "togglebutton.h"
 #include "togglebuttonwidget.h"
-#include "trace.h"
+
 #include "ui_qtsimmysterymachinemaindialog.h"
 #pragma GCC diagnostic pop
 
 ribi::QtSimMysteryMachineMainDialog::QtSimMysteryMachineMainDialog(QWidget *parent) noexcept
  : QtHideAndShowDialog(parent),
    ui(new Ui::QtSimMysteryMachineMainDialog),
-   m_machine(new QtMysteryMachineWidget)
+   m_machine{new QtMysteryMachineWidget}
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   ui->setupUi(this);
-  ui->my_layout->addWidget(m_machine.get());
+  ui->my_layout->addWidget(m_machine);
 }
 
 ribi::QtSimMysteryMachineMainDialog::~QtSimMysteryMachineMainDialog() noexcept
@@ -58,14 +55,3 @@ ribi::QtSimMysteryMachineMainDialog::~QtSimMysteryMachineMainDialog() noexcept
   delete ui;
 }
 
-#ifndef NDEBUG
-void ribi::QtSimMysteryMachineMainDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-}
-#endif
