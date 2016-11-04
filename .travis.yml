@@ -26,6 +26,8 @@ install:
   - sudo pip install codecov
   # OCLint
   - ./install_oclint.sh
+  # Other GitHubs
+  - ./download_other_githubs.sh
 
 # Start virtual X server, from https://docs.travis-ci.com/user/gui-and-headless-browsers/
 before_script:
@@ -34,7 +36,6 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script: 
-  - ./install_githubs.sh
   # Console version
   - qmake -qt=qt5 SimMysteryMachineConsole.pro
   - make debug  
