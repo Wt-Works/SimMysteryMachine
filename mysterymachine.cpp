@@ -49,10 +49,6 @@ ribi::MysteryMachine::MysteryMachine() noexcept
     m_led_top_back(  new LedWidget(0,0,32,32,0.0,255,0,0)),
     m_toggle_button(new ToggleButtonWidget)
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
-
   //TODO: signal got removed, should be detected by the tests
   //m_dial_back->GetDial().m_signal_position_changed.connect(boost::bind(
   //  &ribi::MysteryMachine::Update,this));
@@ -76,20 +72,6 @@ std::vector<std::string> ribi::MysteryMachine::GetVersionHistory() noexcept
     "2014-02-28: Version 1.2: added ToTextCanvas",
   };
 }
-
-#ifndef NDEBUG
-void ribi::MysteryMachine::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-
-  MysteryMachine m;
-  assert(!m.GetVersion().empty());
-}
-#endif
 
 const boost::shared_ptr<ribi::TextCanvas> ribi::MysteryMachine::ToTextCanvas() const noexcept
 {

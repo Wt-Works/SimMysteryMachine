@@ -46,32 +46,32 @@ struct MysteryMachine
   MysteryMachine(const MysteryMachine&) = delete;
   MysteryMachine& operator=(const MysteryMachine&) = delete;
 
-  const boost::shared_ptr<DialWidget> GetDialBack() noexcept { return m_dial_back; }
-  const boost::shared_ptr<DialWidget> GetDialFront() noexcept { return m_dial_front; }
-  const boost::shared_ptr<LedWidget> GetLedBack1() noexcept { return m_led_back_1; }
-  const boost::shared_ptr<LedWidget> GetLedBack2() noexcept { return m_led_back_2; }
-  const boost::shared_ptr<LedWidget> GetLedBack3() noexcept { return m_led_back_3; }
-  const boost::shared_ptr<LedWidget> GetLedFront1() noexcept { return m_led_front_1; }
-  const boost::shared_ptr<LedWidget> GetLedFront2() noexcept { return m_led_front_2; }
-  const boost::shared_ptr<LedWidget> GetLedFront3() noexcept { return m_led_front_3; }
-  const boost::shared_ptr<LedWidget> GetLedTopFront() noexcept { return m_led_top_front;  }
-  const boost::shared_ptr<LedWidget> GetLedTopMiddle() noexcept { return m_led_top_middle; }
-  const boost::shared_ptr<LedWidget> GetLedTopBack() noexcept { return m_led_top_back;   }
-  const boost::shared_ptr<ToggleButtonWidget> GetToggleButton() noexcept { return m_toggle_button; }
+  auto& GetDialBack() noexcept { return m_dial_back; }
+  auto& GetDialFront() noexcept { return m_dial_front; }
+  auto& GetLedBack1() noexcept { return m_led_back_1; }
+  auto& GetLedBack2() noexcept { return m_led_back_2; }
+  auto& GetLedBack3() noexcept { return m_led_back_3; }
+  auto& GetLedFront1() noexcept { return m_led_front_1; }
+  auto& GetLedFront2() noexcept { return m_led_front_2; }
+  auto& GetLedFront3() noexcept { return m_led_front_3; }
+  auto& GetLedTopFront() noexcept { return m_led_top_front;  }
+  auto& GetLedTopMiddle() noexcept { return m_led_top_middle; }
+  auto& GetLedTopBack() noexcept { return m_led_top_back;   }
+  auto& GetToggleButton() noexcept { return m_toggle_button; }
 
 
-  const boost::shared_ptr<const DialWidget> GetDialBack() const noexcept { return m_dial_back; }
-  const boost::shared_ptr<const DialWidget> GetDialFront() const noexcept { return m_dial_front; }
-  const boost::shared_ptr<const LedWidget> GetLedBack1() const noexcept { return m_led_back_1; }
-  const boost::shared_ptr<const LedWidget> GetLedBack2() const noexcept { return m_led_back_2; }
-  const boost::shared_ptr<const LedWidget> GetLedBack3() const noexcept { return m_led_back_3; }
-  const boost::shared_ptr<const LedWidget> GetLedFront1() const noexcept { return m_led_front_1; }
-  const boost::shared_ptr<const LedWidget> GetLedFront2() const noexcept { return m_led_front_2; }
-  const boost::shared_ptr<const LedWidget> GetLedFront3() const noexcept { return m_led_front_3; }
-  const boost::shared_ptr<const LedWidget> GetLedTopFront() const noexcept  { return m_led_top_front;  }
-  const boost::shared_ptr<const LedWidget> GetLedTopMiddle() const noexcept { return m_led_top_middle; }
-  const boost::shared_ptr<const LedWidget> GetLedTopBack() const noexcept   { return m_led_top_back;   }
-  const boost::shared_ptr<const ToggleButtonWidget> GetToggleButton() const noexcept { return m_toggle_button; }
+  const auto& GetDialBack() const noexcept { return m_dial_back; }
+  const auto& GetDialFront() const noexcept { return m_dial_front; }
+  const auto& GetLedBack1() const noexcept { return m_led_back_1; }
+  const auto& GetLedBack2() const noexcept { return m_led_back_2; }
+  const auto& GetLedBack3() const noexcept { return m_led_back_3; }
+  const auto& GetLedFront1() const noexcept { return m_led_front_1; }
+  const auto& GetLedFront2() const noexcept { return m_led_front_2; }
+  const auto& GetLedFront3() const noexcept { return m_led_front_3; }
+  const auto& GetLedTopFront() const noexcept  { return m_led_top_front;  }
+  const auto& GetLedTopMiddle() const noexcept { return m_led_top_middle; }
+  const auto& GetLedTopBack() const noexcept   { return m_led_top_back;   }
+  const auto& GetToggleButton() const noexcept { return m_toggle_button; }
 
   static std::string GetVersion() noexcept;
   static std::vector<std::string> GetVersionHistory() noexcept;
@@ -120,10 +120,6 @@ struct MysteryMachine
   boost::shared_ptr<LedWidget> m_led_top_middle;
   boost::shared_ptr<LedWidget> m_led_top_back;
   boost::shared_ptr<ToggleButtonWidget> m_toggle_button;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 
   void Update() noexcept;
 
