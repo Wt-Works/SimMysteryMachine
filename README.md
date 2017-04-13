@@ -1,5 +1,7 @@
 # SimMysteryMachine
 
+[![Build Status](https://travis-ci.org/richelbilderbeek/SimMysteryMachine.svg?branch=master)](https://travis-ci.org/richelbilderbeek/SimMysteryMachine)
+
 Simulation of my MysteryMachine, written in C++ and visualized with Qt and Wt
 
 ![The real MysteryMachine](SimMysteryMachine.png)
